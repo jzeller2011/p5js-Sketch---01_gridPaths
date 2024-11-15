@@ -1,0 +1,3 @@
+[submodule "p5.js-svg"]
+	path = p5.js-svg
+	url = https://github.com/nkymut/p5.js-svg.git

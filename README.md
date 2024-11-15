@@ -1,12 +1,16 @@
 <p align="center">
-  <img src="assets/readme_banner.png"/>
+  <!-- <img src="assets/readme_banner.png"/> -->
 </p>
 
 # Installation and Usage
 
-This repository is a template, which you can use to quickstart your own new projects. It comes with a pre-configured environment for VS Code, with suggested extensions and configurations.
+This repository is a work-in-progress p5.js project used for creating grid-based path designs in your web browser. The current setup is for curved segments using arcs and circles, but can be adapted to other segment shapes. Currently, each segment is drawn in relation to the previous segment orientation using vectors derived by start and end points. 
 
-[GitHub - Creating a repository from a template](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template)
+On the left of the page there are control buttons to start new paths, flip the orientation of the current path, and set the width/number of segment offsets. The intent is to add additional controls for more options.
+
+To install, simply download the code files into a working directory and initiate using a localhost server (in vscode, download the Live Server extension and press 'go live' on the left side of the status bar). It is reccomended to download snippet extensions for javascript, p5/js, and CSS/HTML. 
+
+The project uses p5.js-svg as a sketch renderer. This is an optional way to work with the svg format in order to export your drawing into an svg editor, or to plot using a cnc or pen plotter. Currently this has not been verified to work and is to be used at your own discretion. See (nkymut's fork)[https://github.com/zenozeng/p5.js-svg/pull/260] of zenozeng's p5.js repo that is updated to support p5.js 1.7.0+ if you plan to use the SVG renderer with a version of p5.js later than v1.6. This repo uses v1.9 for its beginClip() and endClip() functions and has not been fully tested, so your milage will vary.
 
 ```bash
 .

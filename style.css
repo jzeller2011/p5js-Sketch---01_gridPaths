@@ -10,10 +10,26 @@ a:hover, h1:hover {
 
 body {
 	font-family: 'Goudy Bookletter 1911', serif;
+	color: white;
 	display: flex;
 	flex-flow: row;
 	justify-content: center;
 	padding-top: 10px;
+	background-color: grey;
+}
+
+#drawingControls {
+	float: left;
+	width: 20%;
+	display: flex;
+	flex-direction: column;
+}
+
+#canvas {
+	float: center;
+	width: 80%;
+	display: flex;
+	flex-direction: column;
 }
 
 #sketchContainer {
