@@ -63,3 +63,5 @@ typings/
 # Rhino concept files
 *.3dm
 *.3dmbak
+
+# SVG Output Folder

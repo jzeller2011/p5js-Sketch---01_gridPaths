@@ -11,9 +11,53 @@ let r = 1; // Initialize the rotation (1 is clockwise, -1 is counter-clockwise)
 let maxLength = 6
 let cols;
 let rows;
+let canvasWidth = 600
+let canvasHeight = 800
 
 
+p.setup = function () {
 
+  if (p.type === "SVG") {
+    p.createCanvas(canvasWidth, canvasHeight, p.SVG);
+  }
+  else if (p.type === "NORMAL") {
+    p.createCanvas(400, 400);
+  }
+  else {
+    alert("don't know which canvas to create")
+  }
+  
+  p.angleMode(DEGREES)
+  p.noLoop();
+  };
+
+  p.draw = function () {
+
+    clear()
+    gridSize = gridSlider.value();
+    cols = width / gridSize;
+    rows = height / gridSize;
+
+    // Draw the canvas Boundary
+    fill('white')
+    stroke('black')
+    quad(0, 0, width, 0, width, height, 0, height)
+
+    drawGrid(gridSize)
+
+    strokeWeight(3)
+
+    // Parameters to set grid
+
+
+    var g = degreeSlider.value();
+    var m = offsetsSlider.value();
+    
+    noFill()
+    
+    for (let i = 0; i < usrPaths.length; i++) {drawPath(usrPaths[i], g, m, usrRotations[i])}
+    drawPath(usrPnts, g, m, r)
+  }
 
 function setup() {
   
@@ -53,7 +97,7 @@ function setup() {
   restartBttn.mouseClicked(resetPath)
 
   // Flip current Path Button
-  flipBttn = createButton('Flip Current Path')
+  flipBttn = createButton('Flip Cur}}rent Path')
   flipBttn.parent('drawingControls')
   flipBttn.mouseClicked(flipPath)
 
@@ -75,7 +119,6 @@ function setup() {
   canvas.parent("canvas")
   frameRate (10)
   angleMode(DEGREES)
-  normalAngle = 45
   noLoop();
 
 
@@ -83,33 +126,12 @@ function setup() {
 
 }
 
-function draw() {
-  clear()
-  gridSize = gridSlider.value();
-  cols = width / gridSize;
-  rows = height / gridSize;
 
-  // Draw the canvas Boundary
-  fill('white')
-  stroke('black')
-  quad(0, 0, width, 0, width, height, 0, height)
-  // Draw a grid of gridSize 
-  drawGrid(gridSize)
+cvs = new p5(sketch, "canvas");
+cvs.type = "NORMAL";
 
-  strokeWeight(3)
-
-  // Parameters to set grid
-
-
-  var g = degreeSlider.value();
-  var m = offsetsSlider.value();
-  
-  noFill()
-  
-  for (let i = 0; i < usrPaths.length; i++) {drawPath(usrPaths[i], g, m, usrRotations[i])}
-  drawPath(usrPnts, g, m, r)
-  
-}
+svg = new p5(sketch, "hidden_div");
+svg.type = "SVG";
 
 // HELPER FUNCTIONS BELOW HERE
 
@@ -205,7 +227,11 @@ function mousePressed() {
   let centerY = row * gridSize + gridSize / 2;
   usrPnts.push({ x: centerX, y: centerY });
   redraw()
+  
+  
+  
 }
+
 
 
 
